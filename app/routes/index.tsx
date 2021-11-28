@@ -11,7 +11,7 @@ export let meta: MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const user = getUser(request);
+  const user = await getUser(request);
   return {
     user
   }
