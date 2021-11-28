@@ -1,0 +1,35 @@
+.app-root {
+  background-color: #eec0c6;
+  background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+}
+
+.login-page {
+  display: flex;
+  overflow: hidden;
+  height: clamp(100vh, 1fr, 100vh);
+}
+
+.login-left-side {
+  flex: 3;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right-side {
+  padding: 20px 40px 35px;
+  background-color: #f0f0f0;
+  flex: 2;
+  border-radius: 8px;
+}
+
+.form-error-message {
+}
+.form-validation-error {
+}
+
+#username-input {
+}
+#password-input {
+}

@@ -2,9 +2,10 @@
 /// <reference types="@remix-run/node/globals" /> 
 
 type User = {
-  id: number;
+  id: string;
   name: string;
+  email: string;
 }
 export {
-  User
+  User,
 }

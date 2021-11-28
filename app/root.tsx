@@ -1,20 +1,19 @@
 import * as React from "react";
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
   useCatch,
-  useLoaderData
 } from "remix";
 import type { LinksFunction } from "remix";
 import antd from 'antd/dist/antd.css';
 
 import globalStylesUrl from "./styles/global.css";
 import { AuthProvider } from "./store/authProvider";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 export let links: LinksFunction = () => {
   return [
@@ -59,7 +58,6 @@ function Document({
       </head>
       <body>
         {children}
-        <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
@@ -69,35 +67,12 @@ function Document({
 
 function Layout({ children }: React.PropsWithChildren<{}>) {
   return (
-    <div className="remix-app">
-      <header className="remix-app__header">
-        <div className="container remix-app__header-content">
-          <Link to="/" title="Remix" className="remix-app__header-home-link">
-            HOME
-          </Link>
-          <nav aria-label="Main navigation" className="remix-app__header-nav">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <a href="https://remix.run/docs">Remix Docs</a>
-              </li>
-              <li>
-                <a href="https://github.com/remix-run/remix">GitHub</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div className="remix-app__main">
-        <div className="container remix-app__main-content">{children}</div>
-      </div>
-      <footer className="remix-app__footer">
-        <div className="container remix-app__footer-content">
-          <p>&copy; You!</p>
-        </div>
-      </footer>
+    <div className="app-root">
+      <Header />
+
+      <div>{children}</div>
+
+      <Footer />
     </div>
   );
 }
@@ -142,7 +117,6 @@ export function CatchBoundary() {
 }
 
 export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
   return (
     <Document title="Error!">
       <Layout>
